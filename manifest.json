@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "TEST",
+  "version": "1.0",
+  "description": "test description",
+  "permissions": ["activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["style.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["spinner.svg", "translator.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

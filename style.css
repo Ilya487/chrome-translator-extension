@@ -6,6 +6,7 @@
     cursor: pointer;
     width: 26px;
     height: 26px;
+    z-index: 100;
 }
 
 .translateBtn--show-icon {
@@ -42,6 +43,8 @@
 .translatedText {
     visibility: hidden;
     position: absolute;
+    top: 0;
+    left: 0;
     border: 1px solid black;
     border-radius: 3px;
     padding: 12px;

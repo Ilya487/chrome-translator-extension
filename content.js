@@ -105,6 +105,8 @@ async function translate(text) {
     }),
     headers: { "Content-Type": "application/json" },
   });
+  if (!resp.ok) throw new Error("fetch error");
+
   const json = await resp.json();
   let translatedText = json.translatedText;
   if (isOneWord) {
@@ -150,10 +152,13 @@ translateBtn.onclick = async e => {
   translateBtn.classList.remove(styleClasses.showTranslateBtn);
   translateBtn.classList.add(styleClasses.showLoader);
 
-  const text = await translate(selectedText);
-  renderTextArea(e.clientX, e.clientY, text);
-
-  translateBtn.classList.remove(styleClasses.showLoader);
+  try {
+    const text = await translate(selectedText);
+    renderTextArea(e.clientX, e.clientY, text);
+  } catch (e) {
+  } finally {
+    translateBtn.classList.remove(styleClasses.showLoader);
+  }
 };
 
 googleBtn.onclick = () => {
